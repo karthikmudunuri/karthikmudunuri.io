@@ -1,0 +1,215 @@
+---
+title: "Publishing your own NPM Package is too simple!!"
+publishedAt: "2021-07-03"
+summary: "An in-depth guide how can you publish your own npm package."
+image: "/static/images/Publishing-npm-package.png"
+---
+
+<Image
+  src="/static/images/Publishing-npm-package.png"
+  width={1080}
+  height={720}
+/>
+
+
+**Introduction**
+
+Isn't it cool if you can run a command like `npx <your_name>` in someone’s terminal, and they instantly get access to your portfolio, your works, or social handles — right from the CLI?
+
+Or maybe you've built a dope React component. Wouldn't it be even cooler if other devs could use it just by installing it from npm?
+
+That’s the power of open-source and npm — and yes, it’s ridiculously simple to get started!
+
+> Before diving into the how-to, try these in your terminal: `npx karthikmudunuri` or `npx get-response` — just to see what "cool" looks like.
+
+
+---
+
+## 🚀 Create your NPM account
+
+Go to [npmjs.com](https://www.npmjs.com) and sign up for a free account. Don’t skip 2FA (Two-Factor Authentication) — it keeps your packages safe. Use an app like [TOTP Authenticator](https://play.google.com/store/apps/details?id=com.authenticator.authservice2&hl=en&gl=US&pli=1) for better security.
+
+---
+
+## 🧠 Pick a Package Name
+
+This must be unique! Visit the [NPM Registry](https://www.npmjs.com/) and search your desired name to make sure it's available.
+
+If it’s already taken, get creative — maybe add a prefix or use a scoped package (`@yourname/package`).
+
+---
+
+## ⚒️ Start Building the Package
+
+### ✅ Install Node.js and NPM
+
+If Node isn’t installed yet, head to [nodejs.org](https://nodejs.org/) and install the latest LTS version. You’ll get `npm` bundled with it.
+
+### ✅ Initialize Git
+
+Create a project folder:
+```bash
+mkdir my-package && cd my-package
+git init
+```
+
+---
+
+### ✅ Initialize NPM
+
+```bash
+npm init
+```
+
+Answer the prompts:
+
+- **name**: lowercase, hyphenated name.
+- **version**: start with `0.1.0`
+- **description**: what your package does
+- **entry point**: usually `index.js`
+- **keywords**: optional
+- **license**: use default `ISC`
+
+Add this manually to `package.json`:
+
+```json
+"type": "module"
+```
+
+---
+
+## **✍️ Write Your Code**
+
+Create `index.js`:
+
+```js
+#!/usr/bin/env node
+
+console.log(
+  "Follow karthikmudunuri on GitHub: https://github.com/karthikmudunuri"
+);
+```
+
+> That first line allows execution from CLI using `npx`.
+
+---
+
+## **🧪 Add Executable Command**
+
+In `package.json`, add:
+
+```json
+"bin": {
+  "test": "./index.js"
+}
+```
+
+Your full `package.json` should look like:
+
+```json
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "just to test how to publish npm package",
+  "main": "./index.js",
+  "type": "module",
+  "bin": {
+    "test": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karthikmudunuri/test.git"
+  },
+  "author": "Karthik Mudunuri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karthikmudunuri/test/issues"
+  },
+  "homepage": "https://github.com/karthikmudunuri/test#readme"
+}
+```
+
+
+
+## **🔐 Make it Executable**
+
+### Linux/macOS:
+
+```bash
+chmod +x index.js
+```
+
+### Windows (via Git Bash):
+
+```bash
+git update-index --chmod=+x index.js
+```
+
+---
+
+## **🧪 Test Locally with `npm link`**
+
+Run:
+
+```bash
+npm link
+```
+
+Test globally outside the project:
+
+```bash
+npx test
+```
+
+---
+
+## **📦 Publish to NPM**
+
+Login:
+
+```bash
+npm login
+```
+
+Publish:
+
+```bash
+npm publish
+```
+
+Now your package is live! 🎉
+
+Visit [npmjs.com](https://www.npmjs.com/package/test) (replace `test` with your package name).
+
+---
+
+## **🔄 Update Your Package**
+
+1. Bump version in `package.json`:
+
+```json
+"version": "1.1.0"
+```
+
+2. Re-publish:
+
+```bash
+npm publish
+```
+
+Make sure to follow [Semantic Versioning](https://semver.org/).
+
+---
+
+## **✅ Conclusion**
+
+Now you’ve published an NPM package that can be installed and run from anywhere in the world. Whether it’s a React component or a personal CLI — you’ve contributed to open source.
+
+If you found this helpful or want to improve it, ping me on GitHub  
+[@karthikmudunuri](https://github.com/karthikmudunuri)
+
+
+
