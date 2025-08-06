@@ -1,11 +1,11 @@
 {
-  "name": "manuarora.in",
+  "name": "karthikmudunuri.io",
   "description": "My personal blog and website",
   "version": "1.0.0",
   "author": {
-    "name": "Manu Arora",
-    "email": "contact@manuarora.in",
-    "url": "https://manuarora.in"
+    "name": "Karthik mudunuri",
+    "email": "karthikmudunuri999@gmail.com",
+    "url": "https://karthikmudunuri.io"
   },
   "scripts": {
     "dev": "next dev",
@@ -15,7 +15,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/manuarora700/personal-portfolio.git"
+    "url": "git+https://github.com/karthikmudunuri/karthikmudunuri.io.git"
   },
   "dependencies": {
     "@headlessui/react": "^1.2.0",
